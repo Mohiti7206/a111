@@ -8,5 +8,9 @@ public class gitchecking {
 
     void  method2(){
         System.out.println("hello");
+        System.out.println("this ");
+    }
+    void  method2qweqwe(){
+        System.out.println("this is Ken's code");
     }
 }
