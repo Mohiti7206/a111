@@ -104,6 +104,10 @@ public interface AdminUserRepository extends JpaRepository<AdminUserMvc, Integer
     @Query("SELECT e FROM AdminUserMvc e WHERE e.id = :id")
     Optional<AdminUserMvc> findById(@Param("id") Integer id);
 
+//    @Query(value = "SELECT * FROM user e WHERE e.id = :id",nativeQuery = true)
+    @Query("SELECT e FROM AdminUserMvc e WHERE e.id = :id")
+    Optional<AdminUserMvc> findByUserId(@Param("id") Integer id);
+
 
     @Query("SELECT e FROM AdminUserMvc e WHERE LOWER(CONCAT(e.firstName, ' ', e.lastName)) = LOWER(:fullName)")
     AdminUserMvc findByFullName(@Param("fullName") String fullName);

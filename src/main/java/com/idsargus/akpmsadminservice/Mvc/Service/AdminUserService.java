@@ -15,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminUserService {
@@ -37,6 +39,24 @@ public class AdminUserService {
 
     @Autowired
     private AdminDepartmentRepository adminDepartmentRepository;
+
+
+
+
+
+
+
+//    public AdminUserMvc getById(Integer id){
+//        return adminUserRepository.findByUserId(id);
+//    }
+
+    @Transactional
+    public AdminUserResponseDto getById(Integer id ) {
+         AdminUserMvc existingEntity = adminUserRepository.findByUserId(id)
+                .orElseThrow(() -> new RuntimeException("User with provided ID not found."));
+         return convertToDTO(existingEntity);
+    }
+
 
 
 
@@ -111,10 +131,21 @@ public class AdminUserService {
         dto.setId(entity.getId());
 //        dto.setName(entity.getFirstName() +" "+entity.getLastName());
         dto.setFirstName( entity.getFirstName());
-        dto.setLastName( entity.getFirstName());
+        dto.setLastName( entity.getLastName());
         dto.setEnabled(entity.getEnabled());
         dto.setCreatedOn(entity.getCreatedOn());
         dto.setModifiedOn(entity.getModifiedOn());
+        dto.setEmail(entity.getEmail());
+        dto.setContact(entity.getContact());
+        dto.setAddress(entity.getAddress());
+        dto.setUserRoleId(entity.getRole().getId());
+        Set<AdminDepartmentEntityMvc> dids = entity.getDepartments();
+        dto.setDepartmentIds(dids.stream().map(AdminDepartmentEntityMvc::getId).collect(Collectors.toList()));
+
+
+        Set<AdminPermissionEntityMvc> pids = entity.getPermissions();
+        dto.setPermissionIds(pids.stream().map(AdminPermissionEntityMvc::getId).collect(Collectors.toList()));
+
         dto.setCreatedByUserName(entity.getCreatedBy() != null ? entity.getCreatedBy().getFirstName() + " " + entity.getCreatedBy().getLastName(): null);
         dto.setModifiedByUserName(entity.getModifiedBy() != null ? entity.getModifiedBy().getFirstName() + " " + entity.getModifiedBy().getLastName(): null);
         return dto;

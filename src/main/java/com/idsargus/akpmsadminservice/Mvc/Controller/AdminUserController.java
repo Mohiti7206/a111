@@ -30,6 +30,24 @@ public class AdminUserController {
         this.adminUserService = adminUserService;
     }
 
+
+
+
+
+//    @GetMapping("/search/byId")
+    @GetMapping("/search/byId/{id}")
+    public ResponseEntity<?> geByID(@PathVariable Integer id) {
+        System.out.println("method hit");
+        return ResponseEntity.ok(adminUserService.getById(id));
+    }
+
+
+
+
+
+
+
+
     @GetMapping("/search/all")
     public ResponseEntity<?> getEmailTemplates(
             @RequestParam(defaultValue = "0") int page,
@@ -64,7 +82,6 @@ public class AdminUserController {
 
 
     }
-
 
 
 
