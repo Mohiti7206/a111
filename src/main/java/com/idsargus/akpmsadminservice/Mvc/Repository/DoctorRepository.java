@@ -22,6 +22,7 @@ import java.util.Optional;
 @Repository
 public interface DoctorRepository extends JpaRepository<AdminDoctorEntityMvc, Integer>, CrudRepository<AdminDoctorEntityMvc,Integer> {
 
+//    AdminDoctorEntityMvc findByName(String name);
 
     @Cacheable
     @Query(

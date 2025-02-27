@@ -1,6 +1,7 @@
 package com.idsargus.akpmsadminservice.Mvc.Repository;
 
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminArTeams;
+import com.idsargus.akpmsadminservice.Mvc.Entities.AdminDoctorEntityMvc;
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminDoctorGroupMvc;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DoctorGroupResponse;
 //import com.idsargus.akpmsadminservice.entity.AdminDoctorGroup;

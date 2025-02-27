@@ -69,9 +69,6 @@ public class AdminDoctorController {
                 Sort.by(Sort.Order.by(sortBy).with(Sort.Direction.fromString(direction)))
         );
         return ResponseEntity.ok(adminDoctorService.getAll1(query,pageable,enabled,deleted));
-
-
-
     }
 
 
@@ -251,6 +248,58 @@ public class AdminDoctorController {
 //    @Query(value = "SELECT * FROM doctor i where (:groupId is null or i.group_id = :groupId) AND (:companyId is null or i.company_id = :companyId) AND ( i.status = 1)", nativeQuery = true)
 //    public List<AdminDoctorEntity> findByCompanyAndGroup(@Param("groupId") Integer groupId,
 //                                                         @Param("companyId") Integer companyId);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto duplicateNameCheckExistsDto
+    ) {
+        return adminDoctorService.getbyname(duplicateNameCheckExistsDto );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,10 +9,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminDoctorCompanyRepositor
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminDoctorGroupRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.DoctorRepository;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminCompanyResponseDto;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminDoctorResponse;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DoctorGroupResponse;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DoctorRequestDTO;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -278,6 +275,37 @@ public class AdminDoctorService {
         List<AdminDoctorResponse> result = doctorRepository.findByCompanyAndGroup(groupId,companyId);
         return result;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
+
+        return doctorRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
+
+
+
+
+
+
+
 
 
 
