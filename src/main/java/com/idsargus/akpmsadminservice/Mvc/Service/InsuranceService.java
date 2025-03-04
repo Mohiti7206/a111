@@ -10,10 +10,7 @@ import com.idsargus.akpmsadminservice.Mvc.Exception.DuplicateNameException;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.InsuranceRepository;
 //import com.idsargus.akpmsadminservice.Mvc.Repository.UserRepository;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminDoctorResponse;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.HourlyTaskResponseDto;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.InsuranceRequestDto;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.InsuranceResponseDto;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.*;
 import com.idsargus.akpmsadminservice.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -285,7 +282,11 @@ public class InsuranceService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return insuranceRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

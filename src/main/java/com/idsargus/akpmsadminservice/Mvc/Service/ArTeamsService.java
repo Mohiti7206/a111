@@ -9,6 +9,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminArTeamsRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.ArTeamsRequestDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.ArTeamsResponseDto;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -209,7 +210,11 @@ public class ArTeamsService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminArTeamsRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 }

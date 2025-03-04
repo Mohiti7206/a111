@@ -6,6 +6,7 @@ import com.idsargus.akpmsadminservice.Mvc.Exception.DuplicateNameException;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.MoneySourceRepository;
 //import com.idsargus.akpmsadminservice.Mvc.Repository.UserRepository;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.moneysource.MoneySourceRequestDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.moneysource.MoneySourceResponseDto;
 import com.idsargus.akpmsadminservice.entity.User;
@@ -162,7 +163,11 @@ public class MoneySourceService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return moneySourceRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 }

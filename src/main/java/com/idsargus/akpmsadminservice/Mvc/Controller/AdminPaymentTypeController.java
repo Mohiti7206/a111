@@ -129,5 +129,9 @@ public class AdminPaymentTypeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
         }
     }
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminPaymentTypeService.getbyname(name);
+    }
 }

@@ -140,7 +140,11 @@ public class AdminInsuranceController {
 
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return insuranceService.getbyname(name);
+    }
 
 
 

@@ -204,7 +204,11 @@ public class AdminArTeamsController {
 
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return arTeamsService.getbyname(name);
+    }
 
 
 

@@ -9,6 +9,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminDoctorCompanyRepositor
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminCompanyResponseDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminDoctorCompanyRequestDto;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
 import com.idsargus.akpmsadminservice.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -202,7 +203,11 @@ public class AdminDoctorCompanyService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminDoctorCompanyRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

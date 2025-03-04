@@ -10,6 +10,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminHourlyTaskRepo;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.MoneySourceRepository;
 //import com.idsargus.akpmsadminservice.Mvc.Repository.UserRepository;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.HourlyTaskRequestDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.HourlyTaskResponseDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.moneysource.MoneySourceRequestDto;
@@ -298,7 +299,11 @@ public class HourlyTaskService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminHourlyTaskRepo.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

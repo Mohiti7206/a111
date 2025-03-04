@@ -192,7 +192,11 @@ public class AdminDoctorCompanyController {
 
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminDoctorCompanyService.getbyname(name);
+    }
 
 
 

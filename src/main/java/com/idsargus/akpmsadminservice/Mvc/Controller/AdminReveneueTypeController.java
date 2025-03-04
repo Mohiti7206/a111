@@ -166,7 +166,11 @@ public class AdminReveneueTypeController {
 
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminReveneueTypeService.getbyname(name);
+    }
 
 
 

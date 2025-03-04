@@ -133,5 +133,9 @@ public class AdminHourlyTaskController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
         }
     }
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return hourlyTaskService.getbyname(name);
+    }
 }

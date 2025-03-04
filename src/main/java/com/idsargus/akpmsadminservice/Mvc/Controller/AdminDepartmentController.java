@@ -298,6 +298,10 @@ public class AdminDepartmentController {
     ) {
         return ResponseEntity.ok(adminDepartmentService.getalldepartments());
     }
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminDepartmentService.getbyname(name);
+    }
 
 }

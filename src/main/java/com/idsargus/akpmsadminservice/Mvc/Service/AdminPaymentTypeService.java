@@ -9,6 +9,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminPaymentTypeRepository;
 //import com.idsargus.akpmsadminservice.Mvc.Repository.UserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminPaymentTypeResponse;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.PaymentTypeRequestDto;
 import com.idsargus.akpmsadminservice.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -234,7 +235,11 @@ public class AdminPaymentTypeService {
 
         return dto;
     }
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminPaymentTypeRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 }

@@ -10,6 +10,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminDepartmentRequestDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.AdminDepartmentResponseDto;
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DeptResponseDto;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -297,6 +298,10 @@ public class AdminDepartmentService {
         AdminDepartmentResponseDto result = adminDepartmentRepository.findByNameForAdmin(name);
         return result;
     }
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminDepartmentRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 }
 

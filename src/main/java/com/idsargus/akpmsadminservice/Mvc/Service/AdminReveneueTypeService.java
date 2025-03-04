@@ -262,6 +262,10 @@ public class AdminReveneueTypeService {
         return dto;
     }
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminRevenueTypeMvcRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 }
