@@ -402,7 +402,7 @@ public class AdminUserController {
     }
 
     @GetMapping("/search/getByEmail")
-    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    public Boolean getEmail(@RequestParam DuplicateNameCheckExistsDto name
     ) {
         return adminUserService.getByEmail(name);
     }
