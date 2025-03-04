@@ -395,10 +395,16 @@ public class AdminUserController {
 //    public List<User> findEnableAll();
 
 
-    @GetMapping("/search/getbyname")
+    @GetMapping("/search/getByName")
     public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
     ) {
-        return adminUserService.getbyname(name);
+        return adminUserService.getByName(name);
+    }
+
+    @GetMapping("/search/getByEmail")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminUserService.getByEmail(name);
     }
 
 
