@@ -510,7 +510,10 @@ public class AdminUserService {
 
 
 
-
+    public boolean doesUserExist(String fullName) {
+        AdminUserMvc user = adminUserRepository.findByFullName(fullName);
+        return user != null;
+    }
 
 
 

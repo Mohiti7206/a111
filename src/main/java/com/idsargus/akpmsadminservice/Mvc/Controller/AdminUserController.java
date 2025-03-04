@@ -401,12 +401,10 @@ public class AdminUserController {
         return adminUserService.getbyname(name);
     }
 
-//    @GetMapping("/search/getByEmail")
-//    public Boolean getEmail(@RequestParam DuplicateNameCheckExistsDto name
-//    ) {
-//        return adminUserService.getByEmail(name);
-//    }
-
+    @GetMapping("/checkUser")
+    public boolean checkUser(@RequestParam("fullName") String fullName) {
+        return adminUserService.doesUserExist(fullName);
+    }
 
 
 }
