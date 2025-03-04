@@ -153,7 +153,11 @@ public class ChargeBatchTypeService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return chargeBatchTypeRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

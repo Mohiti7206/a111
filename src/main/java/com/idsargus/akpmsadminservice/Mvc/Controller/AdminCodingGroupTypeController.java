@@ -131,7 +131,11 @@ public class AdminCodingGroupTypeController {
 
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminCodingGroupTypeService.getbyname(name);
+    }
 
 
 }

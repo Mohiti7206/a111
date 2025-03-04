@@ -501,7 +501,11 @@ public class AdminUserService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminUserRepository.findByEmail(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

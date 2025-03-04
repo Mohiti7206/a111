@@ -185,5 +185,9 @@ public class AdminLocationService {
         return convertToDTO(updatedEntity);
     }
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminLocationRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 }

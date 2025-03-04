@@ -364,7 +364,11 @@ public class AdminCodingGroupTypeService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return codingGroupTypeRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

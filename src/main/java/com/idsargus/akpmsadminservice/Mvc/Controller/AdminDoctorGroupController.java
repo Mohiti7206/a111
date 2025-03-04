@@ -173,7 +173,11 @@ public class AdminDoctorGroupController {
 
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminDoctorGroupService.getbyname(name);
+    }
 
 
 

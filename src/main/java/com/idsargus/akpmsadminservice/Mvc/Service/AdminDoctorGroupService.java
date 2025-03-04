@@ -235,7 +235,11 @@ public class AdminDoctorGroupService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminDoctorGroupRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

@@ -133,7 +133,11 @@ public class AdminLocationController {
 //  GET  http://localhost:5003/v1/adminapi/locations/search/all?sortBy=desc&direction=desc
 
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminLocationService.getbyname(name);
+    }
 
 
 }
