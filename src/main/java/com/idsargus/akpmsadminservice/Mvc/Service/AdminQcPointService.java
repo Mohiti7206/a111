@@ -306,7 +306,11 @@ public class AdminQcPointService {
 
 
 
+    @Transactional(readOnly = true)
+    public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
 
+        return adminQcPointRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
+    }
 
 
 

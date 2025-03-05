@@ -133,6 +133,10 @@ public class AdminQcPointController {
         return ResponseEntity.ok(adminQcPointService.getparentonly());
     }
 
-
+    @GetMapping("/search/getbyname")
+    public Boolean getEmailTemplates(@RequestParam DuplicateNameCheckExistsDto name
+    ) {
+        return adminQcPointService.getbyname(name);
+    }
 
 }
