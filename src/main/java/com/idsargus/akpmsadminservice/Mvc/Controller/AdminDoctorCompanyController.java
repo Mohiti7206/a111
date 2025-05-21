@@ -70,7 +70,7 @@ public class AdminDoctorCompanyController {
 
 
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class)    @RequestBody AdminDoctorCompanyRequestDto adminDoctorCompanyRequestDto ,
@@ -144,7 +144,7 @@ public class AdminDoctorCompanyController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "emailTemplateCache", key = "#id")
     public ResponseEntity<?> updateTemplateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,

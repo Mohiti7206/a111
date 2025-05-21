@@ -123,7 +123,7 @@ public class ChargeBatchTypeController {
 
 //
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     public ResponseEntity<?> updateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,
             @PathVariable Integer id) {

@@ -117,7 +117,7 @@ public class MoneySourceController {
 
 
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
 //    @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class)  @RequestBody MoneySourceRequestDto moneySourceRequestDto,
@@ -159,7 +159,7 @@ public class MoneySourceController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     public ResponseEntity<?> updateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,
             @PathVariable Integer id) {

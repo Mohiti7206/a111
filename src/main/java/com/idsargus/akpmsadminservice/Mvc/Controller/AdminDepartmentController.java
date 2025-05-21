@@ -86,7 +86,7 @@ public class AdminDepartmentController {
 
     //
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class)
@@ -190,7 +190,7 @@ public class AdminDepartmentController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "emailTemplateCache", key = "#id")
     public ResponseEntity<?> updateTemplateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,
@@ -241,7 +241,7 @@ public class AdminDepartmentController {
 
 
 
-    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
     @GetMapping("/search/parentonly")
     public ResponseEntity<?> getparentonly(
     ) {
@@ -254,7 +254,7 @@ public class AdminDepartmentController {
 
 
 
-    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
     @GetMapping("/search/subdeptonly")
     public ResponseEntity<?> getsubdeptonly(
     ) {
@@ -269,7 +269,7 @@ public class AdminDepartmentController {
 
 
 
-    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
     @GetMapping("/search/subdeptbydept")
     public ResponseEntity<?> getsubdeptbydept(
             @RequestParam(required = false) Integer deptId
@@ -279,7 +279,7 @@ public class AdminDepartmentController {
 
 
 
-    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin','role_user')")
     @GetMapping("/search/name")
     public ResponseEntity<?> getname(
             @RequestParam(required = false) String name

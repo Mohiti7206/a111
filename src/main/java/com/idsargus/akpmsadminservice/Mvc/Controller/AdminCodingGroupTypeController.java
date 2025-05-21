@@ -76,7 +76,7 @@ public class AdminCodingGroupTypeController {
 
 
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class) @RequestBody AdminCodingGroupTypeRequestDto adminCodingGroupTypeRequestDto,
@@ -98,7 +98,7 @@ public class AdminCodingGroupTypeController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> updateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,

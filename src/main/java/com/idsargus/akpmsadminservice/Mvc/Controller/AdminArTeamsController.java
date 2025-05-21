@@ -127,7 +127,7 @@ public class AdminArTeamsController {
 
 
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class) @RequestBody ArTeamsRequestDto arTeamsRequestDto,
@@ -158,7 +158,7 @@ public class AdminArTeamsController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> updateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,

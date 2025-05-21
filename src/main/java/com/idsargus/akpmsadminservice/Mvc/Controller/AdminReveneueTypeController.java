@@ -96,7 +96,7 @@ public class AdminReveneueTypeController {
 
 
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class)
             @RequestBody AdminRevenueTypeRequestDto adminRevenueTypeRequestDto,
@@ -135,7 +135,7 @@ public class AdminReveneueTypeController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     public ResponseEntity<?> updateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,
             @PathVariable Integer id) {

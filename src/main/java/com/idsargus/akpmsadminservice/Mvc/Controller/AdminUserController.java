@@ -98,7 +98,7 @@ public class AdminUserController {
 
 
     @PatchMapping("/updateActivationStatus/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "user", key = "#id")
     public ResponseEntity<?> updateActivationStatus(
             @RequestBody ActivationStatusRequestDto activationStatusRequestDto,
@@ -142,7 +142,7 @@ public class AdminUserController {
 
 
     @PatchMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> update(
             @Validated(ValidationGroups.Update.class)   @RequestBody AdminUserRequestDto adminUserRequestDto ,
@@ -163,7 +163,7 @@ public class AdminUserController {
 
 
     @PatchMapping("/updateDepartmentsForUser/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> updateDepartmentsForUser(
             List<Integer>  departmentIds,
@@ -198,7 +198,7 @@ public class AdminUserController {
 //    "emailTemplateIds" : [1,7]
 //}
     @PatchMapping("/update/emailTemplates/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> updateEmailTemplate(
             @RequestBody EmailTemplateUpdateRequestDto emailTemplateUpdateRequestDto ,
@@ -234,7 +234,7 @@ public class AdminUserController {
 
 
     @PatchMapping("/update/departments/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> updateDeartments(
             @RequestBody DepartmentUpdateRequestDto departmentUpdateRequestDto ,
@@ -275,7 +275,7 @@ public class AdminUserController {
 //}
 
     @PatchMapping("/update/permissions/{id}")
-    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
     @CachePut(value = "arteams", key = "#id")
     public ResponseEntity<?> updatePermissions(
             @RequestBody UserPermissionUpdateDto userPermissionUpdateDto ,
