@@ -294,8 +294,20 @@ public class AdminQcPointService {
         existingEntity.setDeleted(adminQcPointRequestDto.getDeleted());
           existingEntity.setDescription(adminQcPointRequestDto.getDescription());
          existingEntity.setParentId(adminQcPointRequestDto.getParentId());
-        Integer cptype = Integer.valueOf(adminQcPointRequestDto.getCodingProdType());
-         existingEntity.setCodingProdType(cptype);
+//        Integer cptype = Integer.valueOf(adminQcPointRequestDto.getCodingProdType());
+        String codingProdTypeStr = adminQcPointRequestDto.getCodingProdType();
+        Integer cptype = null;
+
+        if (codingProdTypeStr != null && !codingProdTypeStr.trim().isEmpty()) {
+            try {
+                cptype = Integer.valueOf(codingProdTypeStr);
+            } catch (NumberFormatException e) {
+                // Optional: log this issue or handle it if invalid input should be tracked
+                // e.g., logger.warn("Invalid codingProdType: {}", codingProdTypeStr, e);
+            }
+        }
+
+        existingEntity.setCodingProdType(cptype);
 
 
 //        System.out.println("3=========================================");
