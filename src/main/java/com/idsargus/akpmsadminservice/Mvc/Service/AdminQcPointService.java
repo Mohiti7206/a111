@@ -209,7 +209,20 @@ public class AdminQcPointService {
 
         doctor.setEnabled(dto.getEnabled());
         doctor.setDeleted(dto.getDeleted());
-        Integer cptype = Integer.valueOf(dto.getCodingProdType());
+       // Integer cptype = Integer.valueOf(dto.getCodingProdType());
+        String codingProdTypeStr = dto.getCodingProdType();
+        Integer cptype = null;
+
+        if (codingProdTypeStr != null && !codingProdTypeStr.trim().isEmpty()) {
+            try {
+                cptype = Integer.valueOf(codingProdTypeStr);
+            } catch (NumberFormatException e) {
+                // Optional: log this issue or handle it if invalid input should be tracked
+                // e.g., logger.warn("Invalid codingProdType: {}", codingProdTypeStr, e);
+            }
+        }
+
+
         doctor.setCodingProdType(cptype);
         doctor.setSubDepartmentId(dto.getSubDepartmentId());
         doctor.setParentId(dto.getParentId());

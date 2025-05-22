@@ -29,7 +29,7 @@ public class AdminQcPointRequestDto {
     @NotNull(message = "Enabled field is mandatory", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
     private Boolean enabled;
 
-    @NotNull(message = "parent  field is mandatory", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
+//    @NotNull(message = "parent  field is mandatory", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
     private Integer parentId;
 
 
