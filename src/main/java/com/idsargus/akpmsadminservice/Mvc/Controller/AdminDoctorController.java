@@ -239,6 +239,10 @@ public class AdminDoctorController {
     public ResponseEntity<?> findByCompanyAndGroup(
             @RequestParam(required = false) Integer groupId,
             @RequestParam(required = false) Integer companyId) {
+
+//        System.out.println("companyId " + companyId);
+//        System.out.println("groupId " + groupId);
+
         return ResponseEntity.ok(adminDoctorService.findByCompanyAndGroup(groupId,companyId));
     }
 

@@ -170,8 +170,9 @@ public interface DoctorRepository extends JpaRepository<AdminDoctorEntityMvc, In
             "AND (:companyId IS NULL OR d.company.id = :companyId) " +
             "AND d.status = 1")
     @Cacheable(key = "#enabled")
-    List<AdminDoctorResponse> findByCompanyAndGroup(@Param("companyId") Integer companyId,
-                                                    @Param("groupId") Integer groupId);
+    List<AdminDoctorResponse> findByCompanyAndGroup(@Param("groupId") Integer groupId,
+            @Param("companyId") Integer companyId
+                                                    );
 
 
 

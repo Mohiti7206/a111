@@ -49,11 +49,7 @@ public class UserDTO {
         dto.setId(entity.getId() != null ? entity.getId() : null);
         dto.setAr_teams_name(entity.getArTeam() != null ? entity.getArTeam().getName() : null);
         dto.setRole_name(entity.getRole() != null ? entity.getRole().getName() : null);
-
-
-
-
-
+        
 
 
 
