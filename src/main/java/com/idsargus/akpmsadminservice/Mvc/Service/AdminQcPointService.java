@@ -287,13 +287,15 @@ public class AdminQcPointService {
 
 
 
+        existingEntity.setParentId(adminQcPointRequestDto.getParentId());            // parent-qc point
+        existingEntity.setDepartmentId(adminQcPointRequestDto.getDepartmentId());   // Parent Department
+        existingEntity.setSubDepartmentId(adminQcPointRequestDto.getSubDepartmentId()); //  Sub-Parent Department
 
         // Update only non-null fields
         existingEntity.setName(adminQcPointRequestDto.getName());
        existingEntity.setEnabled(adminQcPointRequestDto.getEnabled());
         existingEntity.setDeleted(adminQcPointRequestDto.getDeleted());
           existingEntity.setDescription(adminQcPointRequestDto.getDescription());
-         existingEntity.setParentId(adminQcPointRequestDto.getParentId());
 //        Integer cptype = Integer.valueOf(adminQcPointRequestDto.getCodingProdType());
         String codingProdTypeStr = adminQcPointRequestDto.getCodingProdType();
         Integer cptype = null;
@@ -308,6 +310,15 @@ public class AdminQcPointService {
         }
 
         existingEntity.setCodingProdType(cptype);
+        String subDeptIds = adminQcPointRequestDto.getSubDepartmentId();
+
+        if (subDeptIds != null && !subDeptIds.isEmpty()) {
+            List<String> subDeptIdList = Arrays.asList(subDeptIds.split("\\s*,\\s*"));
+
+            if (!subDeptIdList.contains("7")) {
+                existingEntity.setCodingProdType(null);
+            }
+        }
 
 
 //        System.out.println("3=========================================");
@@ -320,11 +331,8 @@ public class AdminQcPointService {
         }
 //        System.out.println("4=========================================");
 
-        // Save the updated entity
         AdminQcPointEntityMvc updatedEntity = adminQcPointRepository.save(existingEntity);
-//        System.out.println("5=========================================");
 
-        // Convert the updated entity to a DTO and return
         return convertToDTO(updatedEntity);
     }
 

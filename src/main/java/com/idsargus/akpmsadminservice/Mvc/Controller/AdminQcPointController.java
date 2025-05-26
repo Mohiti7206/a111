@@ -31,7 +31,7 @@ public class AdminQcPointController {
             @RequestParam(required = false) Integer departmentId,
             @RequestParam(defaultValue = "desc") String sortDirection // Default sort direction 'asc'
     ) {
-
+        System.out.println(columnName+ " columnname");
 
 
         String sortBy = columnName;

@@ -32,6 +32,7 @@ public class UserDTO {
     private String role_name;
     private List<String> departments;
     private Integer ar_teams_id;
+    private String ar_teams_name;
     private  String created_by_user_name;
     private  String modified_by_user_name;
 
@@ -46,6 +47,17 @@ public class UserDTO {
         UserDTO dto = new UserDTO();
 
         dto.setId(entity.getId() != null ? entity.getId() : null);
+        dto.setAr_teams_name(entity.getArTeam() != null ? entity.getArTeam().getName() : null);
+        dto.setRole_name(entity.getRole() != null ? entity.getRole().getName() : null);
+
+
+
+
+
+
+
+
+
 
         dto.setCreated_by(entity.getCreatedBy() != null && entity.getCreatedBy().getId() != null ?
                 entity.getCreatedBy().getId() : null);

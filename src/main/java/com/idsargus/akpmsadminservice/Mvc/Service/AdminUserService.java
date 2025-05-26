@@ -186,9 +186,9 @@ public class AdminUserService {
 
         user.setFirstName(dto.getFirstName());
         user.setEmail(dto.getEmail());
-//        if (dto.getRole() != null) {
-//            user.setRole(dto.getRole());
-//        }
+        if (dto.getRole() != null) {
+            user.setRole(dto.getRole());
+        }
 
         user.setLastName(dto.getLastName());
         user.setEnabled(dto.getEnabled());
@@ -261,17 +261,19 @@ public class AdminUserService {
         }
 
 
+        System.out.println(adminUserRequestDto.getEmail()+" fffffffffff");
+
         // Update only non-null fields
         existingEntity.setFirstName(adminUserRequestDto.getFirstName());
         existingEntity.setLastName(adminUserRequestDto.getLastName());
         existingEntity.setEnabled(adminUserRequestDto.getEnabled());
           existingEntity.setDeleted(adminUserRequestDto.getDeleted());
-          existingEntity.setEmail(adminUserRequestDto.getEmail());
+//          existingEntity.setEmail(adminUserRequestDto.getEmail());       // email is non-updatable
          existingEntity.setRole(adminUserRequestDto.getRole());
           existingEntity.setArTeam(adminUserRequestDto.getArTeam());
          existingEntity.setLocation(adminUserRequestDto.getLocation());
          existingEntity.setAddress(adminUserRequestDto.getAddress());
-         existingEntity.setPassword(adminUserRequestDto.getPassword());
+//         existingEntity.setPassword(adminUserRequestDto.getPassword());   // password is also non-updatable
          existingEntity.setContact(adminUserRequestDto.getContact());
 
 
