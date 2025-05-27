@@ -64,7 +64,7 @@ public class AdminHourlyTaskEntity extends AdminBaseAuditableEntity {
 			this.setCreatedOn(LocalDateTime.of(now2.toLocalDate(), LocalTime.MIDNIGHT));
 		}
 
-		System.out.println("--------------------------" + (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//		System.out.println("--------------------------" + (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 	}
 
 	@PreUpdate

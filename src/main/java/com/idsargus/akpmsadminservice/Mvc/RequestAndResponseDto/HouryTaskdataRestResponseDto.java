@@ -3,6 +3,8 @@ package com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto;
 //public class HouryTaskdataRestResponseDto {
 //}
 
+import com.idsargus.akpmsadminservice.Mvc.Entities.AdminCodingProdTypeEntity;
+import com.idsargus.akpmsadminservice.Mvc.Entities.AdminHourlyTaskEntity;
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminHourlyTaskNameMvc;
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminRevenueTypeMvc;
 
@@ -49,6 +51,18 @@ public class HouryTaskdataRestResponseDto {
         this.createdByUserName = createdByUserName;
         this.modifiedByUserName = modifiedByUserName;
     }
+
+
+    public HouryTaskdataRestResponseDto(AdminHourlyTaskEntity entity) {
+        this.id = entity.getId();
+        this.createdByUserName = entity.getCreatedBy() != null ? entity.getCreatedBy().getFirstName()+""+entity.getCreatedBy().getLastName() : null;
+        this.createdOn = entity.getCreatedOn();
+        this.modifiedOn = entity.getModifiedOn();
+    }
+
+
+
+
 
     public LocalDateTime getDateReceived() {
         return dateReceived;

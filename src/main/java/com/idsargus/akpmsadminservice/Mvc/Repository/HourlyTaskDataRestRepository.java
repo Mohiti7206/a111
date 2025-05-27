@@ -74,13 +74,6 @@ Page<HouryTaskdataRestResponseDto> findAll1(
 
 
 
-
-
-
-
-
-
-
    @Query(value="SELECT i FROM AdminHourlyTaskEntity i WHERE" +
            " (:name is null or i.hourlyTask.id= :name) and" +
            " (:createdFrom is null or DATE(i.createdOn) >= :createdFrom) AND " +
@@ -100,5 +93,8 @@ Page<HouryTaskdataRestResponseDto> findAll1(
            @Param("dateReceivedFrom") Date dateReceivedFrom,
            @Param("dateReceivedTo") Date dateReceivedTo
    );
+
+
+   Optional<AdminHourlyTaskEntity> findByHourlyTask_Name(String name);
 
 }

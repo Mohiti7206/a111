@@ -3,6 +3,7 @@ package com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto;
 //public class HourlyTaskDataRequestDto {
 //}
 
+import com.idsargus.akpmsadminservice.Mvc.Entities.AdminHourlyTaskName;
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminUserMvc;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 public class HourlyTaskDataRequestDto {
 
-    private String hourlyTask; // URI to the hourly task resource
+    private AdminHourlyTaskName hourlyTask; // URI to the hourly task resource
     private String details;
     private String time;
     private String hours;
@@ -35,11 +36,11 @@ public class HourlyTaskDataRequestDto {
     @NotNull(message = "ModifiedBy is mandatory", groups = ValidationGroups.Update.class)
     private AdminUserMvc modifiedBy;
 
-    public String getHourlyTask() {
+    public AdminHourlyTaskName getHourlyTask() {
         return hourlyTask;
     }
 
-    public void setHourlyTask(String hourlyTask) {
+    public void setHourlyTask(AdminHourlyTaskName hourlyTask) {
         this.hourlyTask = hourlyTask;
     }
 

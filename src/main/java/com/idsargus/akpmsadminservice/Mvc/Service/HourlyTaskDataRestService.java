@@ -2,6 +2,7 @@ package com.idsargus.akpmsadminservice.Mvc.Service;
 
 
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminArTeams;
+import com.idsargus.akpmsadminservice.Mvc.Entities.AdminHourlyTaskEntity;
 import com.idsargus.akpmsadminservice.Mvc.Entities.AdminUserMvc;
 import com.idsargus.akpmsadminservice.Mvc.Exception.DuplicateNameException;
 import com.idsargus.akpmsadminservice.Mvc.Exception.MandatoryFieldException;
@@ -9,10 +10,7 @@ import com.idsargus.akpmsadminservice.Mvc.Repository.AdminArTeamsRepository;
 //import com.idsargus.akpmsadminservice.Mvc.Repository.UserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.AdminUserRepository;
 import com.idsargus.akpmsadminservice.Mvc.Repository.HourlyTaskDataRestRepository;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.ArTeamsRequestDto;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.ArTeamsResponseDto;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.DuplicateNameCheckExistsDto;
-import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.HouryTaskdataRestResponseDto;
+import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -60,40 +58,39 @@ public class HourlyTaskDataRestService {
 
 //
 //
-//
-//    public ArTeamsResponseDto add(ArTeamsRequestDto dto) {
-//        // Create a new entity from the DTO
-//        if (adminArTeamsRepository.findByName(dto.getName()) != null) {
-//            throw new DuplicateNameException("An AdminArTeams with the name '" + dto.getName() + "' already exists.");
+
+    public HouryTaskdataRestResponseDto add(HourlyTaskDataRequestDto dto) {
+        // Create a new entity from the DTO
+//        if (hourlyTaskDataRestRepository.findByHourlyTask_Name(dto.getHourlyTask().getName()) != null) {
+//            throw new DuplicateNameException("An HourlyTask with the name '" + dto.getHourlyTask().getName() + "' already exists.");
 //        }
-//        if(dto.getName()==null|| dto.getName().trim()=="" || dto.getCreatedBy() == null){
-//            throw new MandatoryFieldException("mandatory fields must not be empty or null");
-//        }
-//
-//
-//
-//        AdminArTeams template = new AdminArTeams();
-//
-//        // Set the properties of the template from the DTO
-//        template.setName(dto.getName());
-//
-//        template.setEnabled(dto.getEnabled());
-//
-//        // Save user ID in the created_by field
-//        if (dto.getCreatedBy() != null) {
-//            template.setCreatedBy(dto.getCreatedBy());
-//        }
-//
-//
-//
-//
-//        // Save the template to the database
-//        AdminArTeams savedTemplate = adminArTeamsRepository.save(template);
-//
-//        // Convert the saved entity to response DTO
-//        return new ArTeamsResponseDto(savedTemplate);
-//    }
-//
+        if(dto.getHourlyTask()==null || dto.getCreatedBy() == null){
+            throw new MandatoryFieldException("mandatory fields must not be empty or null");
+        }
+
+
+
+        AdminHourlyTaskEntity template = new AdminHourlyTaskEntity();
+
+        // Set the properties of the template from the DTO
+        template.setHourlyTask(dto.getHourlyTask());
+        template.setDetails(dto.getDetails());
+        template.setTime(dto.getTime());
+        template.setHours(dto.getHours());
+        template.setMinutes(dto.getMinutes());
+        template.setDateReceived(dto.getDateReceived());
+        template.setTaskCompleted(dto.getTaskCompleted());
+        template.setTaskCompleted(dto.getTaskCompleted());
+
+        if (dto.getCreatedBy() != null) {
+            template.setCreatedBy(dto.getCreatedBy());
+        }
+
+        AdminHourlyTaskEntity savedTemplate = hourlyTaskDataRestRepository.save(template);
+
+        return new HouryTaskdataRestResponseDto(savedTemplate);
+    }
+
 
 
 
