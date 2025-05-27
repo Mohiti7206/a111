@@ -202,7 +202,6 @@ public class ArTeamsService {
     public List<ArTeamsResponseDto> findByAllEnabled(
      ) {
         List<ArTeamsResponseDto> result = adminArTeamsRepository.findByAllEnabled();
-
         return result;
     }
 
@@ -212,7 +211,6 @@ public class ArTeamsService {
 
     @Transactional(readOnly = true)
     public Boolean getbyname(DuplicateNameCheckExistsDto duplicateNameCheckExistsDto) {
-
         return adminArTeamsRepository.findByName(duplicateNameCheckExistsDto.getName()) != null;
     }
 

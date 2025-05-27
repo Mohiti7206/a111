@@ -91,6 +91,24 @@ public class  HourlyTaskDataRestController {
 
 
 
+    @PatchMapping("/update/{id}")
+//    @PreAuthorize("hasAnyAuthority('role_admin', 'role_user')")
+    public ResponseEntity<?> update(
+            @Validated(ValidationGroups.Update.class) @RequestBody HourlyTaskDataRequestDto hourlyTaskDataRequestDto,
+            @PathVariable Integer id) {
+
+
+        try {
+            System.out.println("id: " + id);
+
+            HouryTaskdataRestResponseDto response = hourlyTaskDataRestService.update(hourlyTaskDataRequestDto, id);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException ex) {
+            // Return only the message to the front-end
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        }
+    }
+
 
 
 

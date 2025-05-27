@@ -28,7 +28,8 @@ public class HourlyTaskDataRestService {
     public HourlyTaskDataRestService(HourlyTaskDataRestRepository hourlyTaskDataRestRepository) {
         this.hourlyTaskDataRestRepository = hourlyTaskDataRestRepository;
     }
-
+    @Autowired
+    private AdminUserRepository userRepository;
 
     @Transactional(readOnly = true)
     public Page<HouryTaskdataRestResponseDto> getAll1(
@@ -56,20 +57,12 @@ public class HourlyTaskDataRestService {
     }
 
 
-//
-//
 
     public HouryTaskdataRestResponseDto add(HourlyTaskDataRequestDto dto) {
-        // Create a new entity from the DTO
-//        if (hourlyTaskDataRestRepository.findByHourlyTask_Name(dto.getHourlyTask().getName()) != null) {
-//            throw new DuplicateNameException("An HourlyTask with the name '" + dto.getHourlyTask().getName() + "' already exists.");
-//        }
+
         if(dto.getHourlyTask()==null || dto.getCreatedBy() == null){
             throw new MandatoryFieldException("mandatory fields must not be empty or null");
         }
-
-
-
         AdminHourlyTaskEntity template = new AdminHourlyTaskEntity();
 
         // Set the properties of the template from the DTO
@@ -94,7 +87,69 @@ public class HourlyTaskDataRestService {
 
 
 
+    @Transactional
+    public HouryTaskdataRestResponseDto update(HourlyTaskDataRequestDto hourlyTaskDataRequestDto, Integer id) {
+        // Fetch the existing entity from the database
+        AdminHourlyTaskEntity template = hourlyTaskDataRestRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ar team with provided ID not found."));
+
+//        AdminArTeams existingEntity2 = hourlyTaskDataRestRepository.findByName(arTeamsRequestDto.getName());
+//        if (existingEntity2 != null && !existingEntity2.getId().equals(id)) {
+//            throw new DuplicateNameException("An AdminArTeams with the name '" + arTeamsRequestDto.getName() + "' already exists.");
+//        }
 
 
+        template.setHourlyTask(hourlyTaskDataRequestDto.getHourlyTask());
+        template.setDetails(hourlyTaskDataRequestDto.getDetails());
+        template.setTime(hourlyTaskDataRequestDto.getTime());
+        template.setHours(hourlyTaskDataRequestDto.getHours());
+        template.setMinutes(hourlyTaskDataRequestDto.getMinutes());
+        template.setDateReceived(hourlyTaskDataRequestDto.getDateReceived());
+        template.setTaskCompleted(hourlyTaskDataRequestDto.getTaskCompleted());
+        template.setTaskCompleted(hourlyTaskDataRequestDto.getTaskCompleted());
 
+
+        // Fetch the 'modifiedBy' user from the database and set it
+        if (hourlyTaskDataRequestDto.getModifiedBy() != null && hourlyTaskDataRequestDto.getModifiedBy().getId() != null) {
+            AdminUserMvc modifiedByUser = userRepository.findById(hourlyTaskDataRequestDto.getModifiedBy().getId())
+                    .orElseThrow(() -> new RuntimeException("ModifiedBy user not found."));
+            template.setModifiedBy(modifiedByUser);
+        }
+        System.out.println("3--------------------------------------------------------");
+
+        // Save the updated entity
+        AdminHourlyTaskEntity updatedEntity = hourlyTaskDataRestRepository.save(template);
+
+        // Convert the updated entity to a DTO and return
+        return convertToDTO(updatedEntity);
+    }
+
+
+    private HouryTaskdataRestResponseDto convertToDTO(AdminHourlyTaskEntity entity) {
+        HouryTaskdataRestResponseDto dto = new HouryTaskdataRestResponseDto();
+
+        // Check if the entity is not null
+        if (entity != null) {
+            dto.setId(entity.getId());
+
+            dto.setCreatedOn(entity.getCreatedOn());
+            dto.setModifiedOn(entity.getModifiedOn());
+
+            // Handle createdBy field
+            if (entity.getCreatedBy() != null) {
+                dto.setCreatedByUserName(entity.getCreatedBy().getFirstName());
+            } else {
+                dto.setCreatedByUserName(""); // or set to an empty string or null
+            }
+
+            // Handle modifiedBy field
+            if (entity.getModifiedBy() != null) {
+                dto.setModifiedByUserName(entity.getModifiedBy().getFirstName());
+            } else {
+                dto.setModifiedByUserName(""); // or set to an empty string or null
+            }
+        }
+
+        return dto;
+    }
 }

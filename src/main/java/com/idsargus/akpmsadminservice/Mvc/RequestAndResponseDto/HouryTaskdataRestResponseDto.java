@@ -60,8 +60,9 @@ public class HouryTaskdataRestResponseDto {
         this.modifiedOn = entity.getModifiedOn();
     }
 
+    public HouryTaskdataRestResponseDto() {
 
-
+    }
 
 
     public LocalDateTime getDateReceived() {
