@@ -77,17 +77,17 @@ public class  HourlyTaskDataRestController {
 
 
 
-
-    @PostMapping("/add")
-    public ResponseEntity<?> addEmailTemplate(
-            @Validated(ValidationGroups.Create.class) @RequestBody ArTeamsRequestDto arTeamsRequestDto) {
-
-        // Call the service method to save the email template
-        HouryTaskdataRestResponseDto response = hourlyTaskDataRestService.add(arTeamsRequestDto);
-
-        // Return the saved template in the response
-        return ResponseEntity.ok(response);
-    }
+//
+//    @PostMapping("/add")
+//    public ResponseEntity<?> addEmailTemplate(
+//            @Validated(ValidationGroups.Create.class) @RequestBody ArTeamsRequestDto arTeamsRequestDto) {
+//
+//        // Call the service method to save the email template
+//        HouryTaskdataRestResponseDto response = hourlyTaskDataRestService.add(arTeamsRequestDto);
+//
+//        // Return the saved template in the response
+//        return ResponseEntity.ok(response);
+//    }
 
 
 
