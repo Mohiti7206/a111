@@ -32,17 +32,6 @@ public class HourlyTaskDataRestService {
     }
 
 
-
-//    @Transactional(readOnly = true)
-//    public Page<HouryTaskdataRestResponseDto> getAll1(
-//            Pageable pageable
-//    ) {
-//        Page<HouryTaskdataRestResponseDto> result = hourlyTaskDataRestRepository.findAll1(
-//                pageable
-//        );
-//        return result;
-//    }
-
     @Transactional(readOnly = true)
     public Page<HouryTaskdataRestResponseDto> getAll1(
             Integer name,
@@ -67,5 +56,48 @@ public class HourlyTaskDataRestService {
                 pageable
         );
     }
+
+
+//
+//
+//
+//    public ArTeamsResponseDto add(ArTeamsRequestDto dto) {
+//        // Create a new entity from the DTO
+//        if (adminArTeamsRepository.findByName(dto.getName()) != null) {
+//            throw new DuplicateNameException("An AdminArTeams with the name '" + dto.getName() + "' already exists.");
+//        }
+//        if(dto.getName()==null|| dto.getName().trim()=="" || dto.getCreatedBy() == null){
+//            throw new MandatoryFieldException("mandatory fields must not be empty or null");
+//        }
+//
+//
+//
+//        AdminArTeams template = new AdminArTeams();
+//
+//        // Set the properties of the template from the DTO
+//        template.setName(dto.getName());
+//
+//        template.setEnabled(dto.getEnabled());
+//
+//        // Save user ID in the created_by field
+//        if (dto.getCreatedBy() != null) {
+//            template.setCreatedBy(dto.getCreatedBy());
+//        }
+//
+//
+//
+//
+//        // Save the template to the database
+//        AdminArTeams savedTemplate = adminArTeamsRepository.save(template);
+//
+//        // Convert the saved entity to response DTO
+//        return new ArTeamsResponseDto(savedTemplate);
+//    }
+//
+
+
+
+
+
 
 }
