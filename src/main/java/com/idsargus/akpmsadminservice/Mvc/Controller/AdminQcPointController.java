@@ -34,7 +34,7 @@ public class AdminQcPointController {
 
         String sortBy = columnName;
         String direction= sortDirection;
-        size = 500;
+        size = 50000;
 
 
         System.out.println("1");
