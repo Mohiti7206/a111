@@ -111,11 +111,14 @@ public class AdminUserService {
         AdminUserMvc existingEntity = adminUserRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User with provided ID not found."));
 
+        System.out.println("1");
         // Update only the 'enabled' field and keep all other fields unchanged
         existingEntity.setEnabled(enabled);
+        System.out.println("2");
 
         // Save the updated entity back to the database
         AdminUserMvc  updatedEntity = adminUserRepository.save(existingEntity);
+        System.out.println("3");
 
         // Convert the updated entity to a DTO and return
         return convertToDTO(updatedEntity);
@@ -138,7 +141,7 @@ public class AdminUserService {
         dto.setEmail(entity.getEmail());
         dto.setContact(entity.getContact());
         dto.setAddress(entity.getAddress());
-        dto.setUserRoleId(entity.getRole().getId());
+        dto.setUserRoleId(entity.getRole() != null ? entity.getRole().getId(): null);
         Set<AdminDepartmentEntityMvc> dids = entity.getDepartments();
         dto.setDepartmentIds(dids.stream().map(AdminDepartmentEntityMvc::getId).collect(Collectors.toList()));
 
