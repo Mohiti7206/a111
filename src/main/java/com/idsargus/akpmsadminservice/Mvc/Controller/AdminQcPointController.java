@@ -1,6 +1,5 @@
 package com.idsargus.akpmsadminservice.Mvc.Controller;
 
-
 import com.idsargus.akpmsadminservice.Mvc.RequestAndResponseDto.*;
 import com.idsargus.akpmsadminservice.Mvc.Service.AdminQcPointService;
 import org.springframework.cache.annotation.CachePut;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/v1/adminapi/qcpoints")
@@ -36,6 +34,7 @@ public class AdminQcPointController {
 
         String sortBy = columnName;
         String direction= sortDirection;
+        size = 500;
 
 
         System.out.println("1");
