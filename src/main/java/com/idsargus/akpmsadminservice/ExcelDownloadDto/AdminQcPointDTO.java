@@ -69,8 +69,31 @@ public class AdminQcPointDTO {
         dto.setSub_department_id(adminQcPoint.getSubDepartmentId() != null ? adminQcPoint.getSubDepartmentId() : null);
 
 //        // Handle department_name
-//        dto.setDepartment_name(adminQcPoint.getDepartment() != null ? adminQcPoint.getDepartment().getName() : null);
-//        dto.setCoding_prod_type(adminQcPoint.getCodingProdTypes() != null ? adminQcPoint.getCodingProdTypes().getName() :null); // changed to latest variable
+        dto.setDepartment_name(adminQcPoint.getDepartment() != null ? adminQcPoint.getDepartment().getName() : null);
+//        dto.setCoding_prod_type(adminQcPoint.getCodingProdType() != null ? adminQcPoint.getCodingProdTypes().getName() :null); // changed to latest variable
+        Integer codingProdType = adminQcPoint.getCodingProdType();
+        String groupName = null;
+
+        if (codingProdType != null) {
+            switch (codingProdType) {
+                case 1:
+                    groupName = "Group A";
+                    break;
+                case 2:
+                    groupName = "Group B";
+                    break;
+                case 3:
+                    groupName = "Group C";
+                    break;
+                case 4:
+                    groupName = "Hourly";
+                    break;
+                default:
+                    groupName = null;
+            }
+        }
+
+        dto.setCoding_prod_type(groupName);
 
 
         // Handle parent_name
