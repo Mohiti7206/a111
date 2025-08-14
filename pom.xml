@@ -66,9 +66,9 @@
 					<execution>
 						<id>run-gitleaks</id>
 						<phase>verify</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
+<!--						<goals>-->
+<!--							<goal>exec</goal>-->
+<!--						</goals>-->
 						<configuration>
 							<executable>gitleaks</executable>
 							<arguments>

@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class DevsecopsPracticeApplication {
 
-//	 public static  final String AWS_KEY = "AKIAIOSFODNN7EXAMPLE";
+	 public static  final String AWS_KEY = "AKIAIOSFODNN7EXAMPLE";
 
 	public static void main(String[] args) {
 		System.out.println("kdasdasdsd");
-//		System.out.println("AWS_KEY"+" "+ AWS_KEY);
+		System.out.println("AWS_KEY"+" "+ AWS_KEY);
 		
 		SpringApplication.run(DevsecopsPracticeApplication.class, args);
 	}
