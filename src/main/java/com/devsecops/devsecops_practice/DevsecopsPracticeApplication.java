@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+
 public class DevsecopsPracticeApplication {
 
 	 public static  final String AWS_KEY = "AKIAIOSFODNN7EXAMPLE";
